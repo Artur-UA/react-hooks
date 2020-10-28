@@ -6,7 +6,7 @@ export const Cards = () => {
         <div className='card'>
             <div className='card-body'>
                 <h3 className='card-title'>Привет</h3>
-                <Link to={`/profile' + '/react`}>Хеллоу</Link>
+                <Link to={'/profile/'}>Хеллоу</Link>
             </div>
 
         </div>
