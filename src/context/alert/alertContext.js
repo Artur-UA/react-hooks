@@ -1,3 +1,3 @@
 import {createContext} from 'react'
 
-export const AlertContext = createContext() //создание 
+export const AlertContext = createContext() //создание контекста
