@@ -4,7 +4,7 @@ import { GitContext } from '../context/gitHub/gitHubContext'
 
 export const Search = () => {
 
-  const {show} = useContext(AlertContext) //вытягиваем show из контекста AlertContext
+  const alert = useContext(AlertContext) //вытягиваем show из контекста AlertContext
   const gitHub = useContext(GitContext) //вытягиваем все из контекста GitContext
 
   const [stateValue, setValue] = useState('')  //stateValue так мы называем сам state(название может быть любым),  setValue это функция которая позволяет менять state(название может быть любым). в useState передается начальное значение данного состояния 
@@ -19,13 +19,17 @@ export const Search = () => {
         return //ничего не будем делать если нажали на другую клавишу и покинем const onSubmit, а если нет то продолжим
     } 
 
+    gitHub.clearUser()//если в поле input удалить все и нажать клавишу enter то очистим от фотографий все 
+
     if (stateValue.trim()) { //если нажал на enter (потому что нажатие любой клавишы не enter приведет к выходу из const onSubmit(смотреть выше)) и там после обрезке пробелов (trim()) чтото есть, то
         console.log('Make job with: ', stateValue); //фраза плюс то, что записали в input 
 
         gitHub.search(stateValue.trim())
 
+        alert.hide()//если чтото написано в строке, то будем убирать alert 
+
     } else { //тоесть если нажали enter а в input пусто 
-        show('Empty line, write something') //покажем alert с этим тукстом
+        alert.show('Empty line, write something') //покажем alert с этим тукстом
     }
   }
 
