@@ -27,9 +27,9 @@ export const Profile = ({match}) => {
 
     return (
         <> 
-            <h1>Profile</h1>
+            
             <Link to="/" className='btn btn-link'>
-                <button>To home page</button>
+                <button className="btn btn-outline-primary">To home page</button>
             </Link>
 
             <div className='card mb-4'>
@@ -70,9 +70,9 @@ export const Profile = ({match}) => {
 
                             </ul>
 
-                                <div className='badge badge-primary'>Followers: {followers}</div>
-                                <div className='badge badge-success'>Following: {following}</div>
-                                <div className='badge badge-info'>Repository: {public_repos}</div>
+                                <div className='badge badge-primary'>Followers: {followers}</div> &ensp;
+                                <div className='badge badge-success'>Following: {following}</div> &ensp;
+                                <div className='badge badge-info'>Repository: {public_repos}</div> &ensp;
                                 <div className='badge badge-dark'>Gists {public_gists}</div>
 
                         </div>  

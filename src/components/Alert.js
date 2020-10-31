@@ -4,7 +4,7 @@ import { AlertContext } from '../context/alert/alertContext'
 export const Alert = () => { //передаем в условие props и уже из него достаем alert 
     const {alert, hide} = useContext(AlertContext)
 
-    if(!alert) return null
+    if(!alert) return null// если alert нету, то просто ничего не будет выводить 
 
     return (
         <div 

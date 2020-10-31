@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom'
 export const Navbar = () => ( //обычная функция возращающая JSX 
     <nav className='navbar navbar-dark bg-primary navbar-expand-lg'>
         <div className='navbar-brand'>
-            DNIPRO
+            GitHub search
         </div>
         <ul className='navbar-nav'>
             <li className='nav-item'>
@@ -14,9 +14,9 @@ export const Navbar = () => ( //обычная функция возращающ
             <li className='nav-item'>
                 <NavLink to="/about" className='nav-link'>About</NavLink>
             </li>
-            <li className='nav-item'>
+            {/*<li className='nav-item'>
                 <NavLink to="/profile/:name" className='nav-link'>Profile</NavLink>
-            </li>
+</li>*/}
         </ul>
     </nav>
 )
