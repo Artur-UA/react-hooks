@@ -8,13 +8,13 @@ const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
 
 
-const websiteEnd = (url) => {  // сделали конст чтобы добавлять окончание к запросу(конец не меняется) функция получает url и к нему добавляет конец(который мы написали в return)
+const websiteEnd = (url) => {  
     return `${url}client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`
 }
 
 export const GitState = ({children}) => {
     
-    const initialState = { //изначальное состояние state 
+    const initialState = { 
         user: {},
         users: [],
         loading: false,
@@ -23,44 +23,42 @@ export const GitState = ({children}) => {
     
     const [state, dispatch] = useReducer(GitReducer, initialState)
 
-    const search = async value => { //async потому что запрос на сервер //покажет всю инфу которая есть на сервере 
+    const search = async value => { 
         
-        setLoading() //чтобы работал загручик, пока сервер отвечает 
-
-        //.сделали благодаря axios 
+        setLoading() 
+ 
         const response = await axios.get(
-            `https://api.github.com/search/users?q=${value}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`//посылаем запрос на сервер
+            `https://api.github.com/search/users?q=${value}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`
         )
 
         dispatch({
             type: SEARCH_USERS,
-            payload: response.data.items //данные с сервера  с переменной response
+            payload: response.data.items 
         })
     }
 
-    const getUser = async name => {//событие загрузки имени, тоесть мы написали имя и отправили запрос есть ли оно в базе 
-        setLoading() //чтобы работал загручик, пока сервер отвечает 
+    const getUser = async name => {
+        setLoading() 
         
-        //сделали благодаря axios 
         const response = await axios.get(
-            //`https://api.github.com/users/${name}?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`//посылаем запрос на сервер  в name это то что мы напишем на сайте и его будет искать в базе   
+           
 
-            websiteEnd(`https://api.github.com/users/${name}?`)   //переписал это для примера с использование новой функции, которая добавляет текст в конце, чуть выше оригинал с объяснением
+            websiteEnd(`https://api.github.com/users/${name}?`)   
         )
 
 
         dispatch({
             type: GET_USER,
-            payload: response.data //данные с сервера 
+            payload: response.data 
         })
     }
 
-    const getRepos = async name => {//событие загрузки репозитория конкретного человека(которого мы напишем на странице)
-        setLoading() //чтобы работал загручик, пока сервер отвечает 
+    const getRepos = async name => {
+        setLoading() 
         
-        //...сделаем благодаря axios
+
         const response = await axios.get(
-            websiteEnd(`https://api.github.com/users/${name}/repos?per_page=5&`) //per_page=5 означает показать на странице не больше 5 репозиториев(данных)  & в конце чтобы добавили норм данные для конца(из функции websiteEnd)
+            websiteEnd(`https://api.github.com/users/${name}/repos?per_page=5&`) 
         )
 
         dispatch({
@@ -70,14 +68,14 @@ export const GitState = ({children}) => {
 
     }
 
-    const clearUser = () => {//событие очищение списка 
+    const clearUser = () => {
 
         dispatch({
             type: CLEAR_USERS
         })
     }
 
-    const setLoading = () => { //событие загрузчика 
+    const setLoading = () => { 
 
         dispatch({
             type: SET_LOADING
@@ -85,13 +83,13 @@ export const GitState = ({children}) => {
     }
 
 
-    const {user, users, repos, loading} = state // разбираем state на отдельные элементы 
+    const {user, users, repos, loading} = state 
 
 
     return (
-        <GitContext.Provider value={{  //передаем все методы, чтобы их можно было использовать в тех компонентах, которые будут подключать в себя этот контекст 
+        <GitContext.Provider value={{  
             setLoading, clearUser, getRepos, getUser, search, 
-            user, users, repos, loading // также делаем доступны для других компоненото значения, по которым мы работаем \\ по этому мы их также экспортируем 
+            user, users, repos, loading 
 
         }}>
             {children}

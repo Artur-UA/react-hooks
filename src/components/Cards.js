@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-export const Cards = ({user}) => { //получаем инфу при вызову в home.js и сразу ее разбиваем (Декомпозиция (destructuring) позволяет извлечь из объекта отдельные значения в переменные)
+export const Cards = ({user}) => { 
     return(
         <div className='card'>
             <img src={user.avatar_url} alt={user.login} className='card-img-top' />

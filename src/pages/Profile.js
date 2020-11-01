@@ -35,7 +35,7 @@ export const Profile = ({match}) => {
             <div className='card mb-4'>
                 <div className='card-body'>
                     <div className='row'>
-                        <div className='col-sm-3 text-center'> {/*столбик предназначен только на 3 колонки, поэтому после 3-х делаем новый div*/}
+                        <div className='col-sm-6 text-center'> {/*столбик предназначен только на 3 колонки, поэтому после 3-х делаем новый div*/}
 
                             <img 
                                 src={avatar_url} 

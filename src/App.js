@@ -16,7 +16,7 @@ function App() {
                 <Navbar />
                 <div> 
                     <div className="container pt-4"> 
-                        <Alert alert={{text: 'Alert test'}}/> {/*без прописаных параметров не будет работать. первые скобки о том что пишем в чисто js вторые скобки что передаем объект/ text поле обьязательно должно быть*/ }
+                        <Alert alert={{text: 'Alert test'}}/> 
                         <Switch>
                             <Route path='/' exact component={Home}/>
                             <Route path='/about' component={About}/>

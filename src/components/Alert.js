@@ -1,14 +1,14 @@
 import React, {useContext} from 'react'
 import { AlertContext } from '../context/alert/alertContext'
 
-export const Alert = () => { //передаем в условие props и уже из него достаем alert 
+export const Alert = () => { 
     const {alert, hide} = useContext(AlertContext)
 
-    if(!alert) return null// если alert нету, то просто ничего не будет выводить 
+    if(!alert) return null
 
     return (
         <div 
-            className={`alert alert-${alert.type || 'secondary'} alert-dismissible`} // будем давать клас alert.type(тут будут передаватся цвета) чтобы были другие цвета, если ничего не будет, будет класс alert-secondary(чтобы по умолчанию он имел фиксированый цвет)
+            className={`alert alert-${alert.type || 'secondary'} alert-dismissible`} 
             role="alert">
 
             {alert.text}
